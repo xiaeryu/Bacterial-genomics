@@ -12,9 +12,9 @@ After the quality check, low quality reads can be trimmed with public tools like
 #### Step 3. Summary of the sequencing throughput
 The sequencing throughput both before and after trimming the reads can be summarized by calculating: 1> the number of reads; 2> the number of bases. This can be down with the script [readLength.pl](https://github.com/xiaeryu/Bacterial-genomics/blob/master/readLength.pl) in this repository.
 
-#### Step 4. De novo assembly
-##### De novo assembly
-Short sequencing reads are assembled with de novo assembly software into long contigs for downstream analysis. The software we have been using is [Velvet](https://www.ebi.ac.uk/~zerbino/velvet/), of which the parameters can be optimized with [VelvetOptimiser](http://bioinformatics.net.au/software.velvetoptimiser.shtml).  
+#### Step 4. _De novo_ assembly
+##### _De novo_ assembly
+Short sequencing reads are assembled with _de novo_ assembly software into long contigs for downstream analysis. The software we have been using is [Velvet](https://www.ebi.ac.uk/~zerbino/velvet/), of which the parameters can be optimized with [VelvetOptimiser](http://bioinformatics.net.au/software.velvetoptimiser.shtml).  
 **Update(2015-06-19):** Based on an in house assessment of assembly tools, [SPAdes](http://bioinf.spbau.ru/spades) is suggested to fulfill the task!:octocat:
 ##### Summary statistics
 A script named [contigLength.pl](https://github.com/xiaeryu/Bacterial-genomics/blob/master/contigLength.pl) can be found in this repository to check the quality of the assembly.
