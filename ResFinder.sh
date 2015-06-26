@@ -11,4 +11,4 @@ blastn -query contigs.fa -db resfinder -task blastn -outfmt 7 > contigs.resfinde
 perl hitDB.pl all_databases.fsa contigs.resfinder.blast.out 0.95(can change) 80(canchange) > contigs.resfinder.parse.out
 
 ## Step 4. Collapse the .parse.out file to collapse overlapping hits.
-perl collapsePS.pl contigs.resfinder.parse.out > contigs.resfinder.filter.out
+sort -k1 -nk7 contigs.resfinder.parse.out | perl collapsePS.pl  - > contigs.resfinder.filter.out
