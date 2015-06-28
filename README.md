@@ -20,7 +20,8 @@ Short sequencing reads are assembled with _de novo_ assembly software into long 
 A script named [contigLength.pl](https://github.com/xiaeryu/Bacterial-genomics/blob/master/contigLength.pl) can be found in this repository to check the quality of the assembly.
 
 #### Step 5. _In silico_ MLST
-Given the species known and the MLST scheme available for the species, the _in silico_ MLST can be performed with a python script named [srst](http://sourceforge.net/projects/srst/files/mlstBLAST/) making use of BLAST similarity search. If, however, we don't want to assume the species known, we can identify the species first before this step.
+Given the species known and the MLST scheme available for the species, the _in silico_ MLST can be performed with a python script named [srst](http://sourceforge.net/projects/srst/files/mlstBLAST/) making use of BLAST similarity search. If, however, we don't want to assume the species known, we can identify the species first before this step.  
+**Update(2015-06-28):** srst is often problematic for typing _K.pneumoniae_ by misjudging the PhoE gene as absent, thus not recommended for such purposes.
 
 #### Step 6. ResFinder to identidy resistance genes
 In fact this can be done for ResFinder, PlasmidFinder, VirulenceFinder, and other finders thanks to the well curated database provided by [Center for Genomic Epidemiology](https://cge.cbs.dtu.dk/services/data.php):smile:.  
