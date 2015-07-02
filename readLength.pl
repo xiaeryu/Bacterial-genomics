@@ -1,4 +1,4 @@
-#!usr/bin/perl
+#!/usr/bin/perl
 
 ## This script aims at summarizing the sequencing stats from FASTQ files.
 ## Input1. the input fastq file
