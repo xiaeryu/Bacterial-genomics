@@ -1,4 +1,4 @@
-#!usr/bin/perl
+#!/usr/bin/perl
 
 ## This script aims at extracting necessary information from blast output file.
 ## Input: 1. database fasta file for the blast search
