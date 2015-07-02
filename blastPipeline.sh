@@ -11,7 +11,7 @@ script="/path/to/"                                              # Directory to t
 # Search for NDM-containing contig
 blastn -query $input -db $database -task blastn -outfmt 7 > $outdir/$prefix\_blast.out
 awk '{if(($4>800)&&($3>=95)) print}' $outdir/$prefix\_blast.out | grep -v '#' | awk '{print $1}' > $outdir/$prefix\_NDM.contigName
-cat $outdir/$prefix\_NDM.contigName | while read line; do perl $script/contig_sequence.pl $input $line; done > $outdir/$prefix\_NDM.contigSeq
+cat $outdir/$prefix\_NDM.contigName | while read line; do perl $script/contigSequence.pl $input $line; done > $outdir/$prefix\_NDM.contigSeq
 
 
 # Search for plasmids similar to the NDM-containing contig
