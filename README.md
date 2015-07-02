@@ -21,8 +21,10 @@ A script named [contigLength.pl](https://github.com/xiaeryu/Bacterial-genomics/b
 
 #### Step 5. _In silico_ MLST
 Given the species known and the MLST scheme available for the species, the _in silico_ MLST can be performed with a python script named [srst](http://sourceforge.net/projects/srst/files/mlstBLAST/) making use of BLAST similarity search. If, however, we don't want to assume the species known, we can identify the species first before this step.  
-**Update(2015-06-28):** srst is often problematic for typing _K.pneumoniae_ by misjudging the PhoE gene as absent, thus not recommended for such purposes.
+**Update(2015-06-28):** srst is often problematic for typing _K.pneumoniae_ by misjudging the PhoE gene as absent, thus not recommended for such purposes.  
+**Update(2015-07-02:)** [srst2](https://github.com/katholt/srst2) is an alternative to srst for _in silico_ MLST.
 
 #### Step 6. ResFinder to identidy resistance genes
 In fact this can be done for ResFinder, PlasmidFinder, VirulenceFinder, and other finders thanks to the well curated database provided by [Center for Genomic Epidemiology](https://cge.cbs.dtu.dk/services/data.php):smile:.  
-An example script for such pipelines can be found as [ResFinder.sh](https://github.com/xiaeryu/Bacterial-genomics/blob/master/ResFinder.sh) in this repository, with individual scripts used in this pipeline also in this repository as [hitDB.pl](https://github.com/xiaeryu/Bacterial-genomics/blob/master/hitDB.pl) and [collapsePS.pl](https://github.com/xiaeryu/Bacterial-genomics/blob/master/collapsePS.pl).
+An example script for such pipelines can be found as [ResFinder.sh](https://github.com/xiaeryu/Bacterial-genomics/blob/master/ResFinder.sh) in this repository, with individual scripts used in this pipeline also in this repository as [hitDB.pl](https://github.com/xiaeryu/Bacterial-genomics/blob/master/hitDB.pl) and [collapsePS.pl](https://github.com/xiaeryu/Bacterial-genomics/blob/master/collapsePS.pl).  
+**Update(2015-07-02:)** [srst2](https://github.com/katholt/srst2) can also be used for such purposes.
