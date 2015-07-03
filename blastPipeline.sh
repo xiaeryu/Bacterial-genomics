@@ -30,7 +30,7 @@ mkdir $outdir/abacas
 while read line;
 do
         mkdir $outdir/abacas/$line;
-        perl ~/ndm-1/pipeline/abacas.1.3.1.pl -r $outdir/NCBI_info/$line.fasta -q $input -p 'nucmer' -c -o $outdir/abacas/$line/contigSorted_$line;
+        perl abacas.1.3.1.pl -r $outdir/NCBI_info/$line.fasta -q $input -p 'nucmer' -c -o $outdir/abacas/$line/contigSorted_$line;
 done < $outdir/$prefix\_NDM.genomeName
 
 # Summary
