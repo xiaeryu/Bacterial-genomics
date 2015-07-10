@@ -28,5 +28,6 @@ $ sh speciesIndent.sh path/to/contigs.fa path/to/database.fa
 * input2: the downloaded database, such as "HOMD_16S_rRNA_RefSeq_V13.2.fasta"
 
 #####OUTPUT:
+Output files should be in the same directory as the input directory.  
 * _sp.blast.out: the blast output file
 * .species: the identification of the top 3 most similar 16S RNAs
