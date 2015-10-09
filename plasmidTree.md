@@ -25,3 +25,10 @@ prodigal -i input_file -o output_summary -a output_protein_sequence -d output_nt
 # For very short sequences that cannot be predicted as above:
 prodigal -p meta -i input_file -o output_summary -a output_protein_sequence -d output_nt_sequence -s output_gene_file
 ```
+
+Pre-processing
+---
+Remove duplicate gene coding sequences on each plasmid using [removeRepeat.pl](https://github.com/xiaeryu/Bacterial-genomics/blob/master/removeRepeat.pl) based on a sequence similarity score (use 0.45 usually).
+```shell
+perl removeRepeat.pl input.ffn 0.45 input.removed.ffn
+```
