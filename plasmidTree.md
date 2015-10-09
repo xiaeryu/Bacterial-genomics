@@ -28,7 +28,30 @@ prodigal -p meta -i input_file -o output_summary -a output_protein_sequence -d o
 
 Pre-processing
 ---
-Remove duplicate gene coding sequences on each plasmid using [removeRepeat.pl](https://github.com/xiaeryu/Bacterial-genomics/blob/master/removeRepeat.pl) based on a sequence similarity score (use 0.45 usually).
+1. Remove duplicate gene coding sequences on each plasmid using [removeRepeat.pl](https://github.com/xiaeryu/Bacterial-genomics/blob/master/removeRepeat.pl) based on a sequence similarity score (use 0.45 usually).
 ```shell
 perl removeRepeat.pl input.ffn 0.45 input.removed.ffn
+```
+
+2. Concatenate all complete plasmid sequences to generate a multiple-fasta file.
+```shell
+cat fna/* > genomes.fasta
+```
+
+3. Concatenate all coding sequences to generate a multiple fasta file.
+```shell
+cat removed.ffn/* > genes.fasta
+```
+
+Generate data matrix
+---
+##### Blastn to identify genes in genetic sequences.
+```shell
+makeblastdb -in genes.fasta -out genes.fasta -dbtype nucl
+blastn -query genomes.fasta -db genes.fasta -task blastn -outfmt 7 > genome_against_gene.blast.out
+```
+
+##### Parse blast output file
+```shell
+perl parseBlastout.pl genomes.fasta genes.fasta genome_against_gene.blast.out genome_against_gene.parse.out
 ```
