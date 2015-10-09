@@ -55,3 +55,8 @@ blastn -query genomes.fasta -db genes.fasta -task blastn -outfmt 7 > genome_agai
 ```shell
 perl parseBlastout.pl genomes.fasta genes.fasta genome_against_gene.blast.out genome_against_gene.parse.out
 ```
+
+##### Adding outgroup
+```shell
+var=`awk '{print NF}' genome_against_gene.parse.out | head -1`; echo -n "outgroup" >> genome_against_gene.parse.out; for(( i=1;i<$var;i++ )); do echo -ne "\t0" >> genome_against_gene.parse.out; done; echo >> genome_against_gene.parse.out
+```
