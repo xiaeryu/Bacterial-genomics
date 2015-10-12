@@ -61,13 +61,50 @@ perl parseBlastout.pl genomes.fasta genes.fasta genome_against_gene.blast.out ge
 var=`awk '{print NF}' genome_against_gene.parse.out | head -1`; echo -n "outgroup" >> genome_against_gene.parse.out; for(( i=1;i<$var;i++ )); do echo -ne "\t0" >> genome_against_gene.parse.out; done; echo >> genome_against_gene.parse.out
 ```
 
-Calculate  distance matrix
+Build consensus tree
 ---
+##### Calculate distance matrix
 Based on the feature matrix, the distance matrix can be calculated with the script [dist.r](https://github.com/xiaeryu/Bacterial-genomics/blob/master/dist.r)
 ```shell
 # @input 1: data matrix
 # @input 2: target output distance matrix
 # @require: R package 'data.table'
 
-Rscript dist.r genome_against_gene.parse.out genome_against_gene.distance.all
+Rscript dist.r genome_against_gene.parse.out genome_against_gene.all.dist
 ```
+
+##### Distance matrix to phylip format
+```shell
+perl src/phylipFromDist.pl genome_against_gene.all.dist genome_against_gene.all.phy
+```
+
+##### Phylogenetic tree
+A neighbor-joining tree can be built with [phylip](http://evolution.genetics.washington.edu/phylip.html) by calling the function _neighbor_.
+
+
+Build bootstrap tree
+---
+Apart from the consensus tree, a bootstrap tree is also needed to assess the accuracy of the consensus tree.  
+
+##### Sampling
+To conduct bootstrap tree, sampling should be conducted with the script [sampling.pl](https://github.com/xiaeryu/Bacterial-genomics/blob/master/sampling.pl)
+
+* Usage:
+```shell
+perl sampling.pl <input file to sample from> <percentage to take> <number of rounds to sample> <output directory> <prefix of output> <start number for naming>
+
+# Argument 1: input genome_against_gene.parse.out file to sample from
+# Argument 2: percentage for downsampling, suggested value can be 0.2
+# Argument 3: number of rounds for the bootstrap analysis, suggested value can be 1000
+# Argument 4: directory for the downsampling files
+# Argument 5: prefix of the output files
+# Argument 6: the start number of the naming.
+```
+
+* Example:
+```shell
+perl sampling.pl genome_against_gene.parse.out 0.2 1000 ./sampling.mat/ sampling 1
+```
+
+##### Tree building
+For each downsampled matrix, build a neighbor-joining tree following the 'Build consensus tree' session. A number of phylogenetic trees would be constructed, from which the bootstrap tree can be computed with the phylip program _consense_. 
