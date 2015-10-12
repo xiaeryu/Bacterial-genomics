@@ -60,3 +60,14 @@ perl parseBlastout.pl genomes.fasta genes.fasta genome_against_gene.blast.out ge
 ```shell
 var=`awk '{print NF}' genome_against_gene.parse.out | head -1`; echo -n "outgroup" >> genome_against_gene.parse.out; for(( i=1;i<$var;i++ )); do echo -ne "\t0" >> genome_against_gene.parse.out; done; echo >> genome_against_gene.parse.out
 ```
+
+Calculate  distance matrix
+---
+Based on the feature matrix, the distance matrix can be calculated with the script [dist.r](https://github.com/xiaeryu/Bacterial-genomics/blob/master/dist.r)
+```shell
+# @input 1: data matrix
+# @input 2: target output distance matrix
+# @require: R package 'data.table'
+
+Rscript dist.r genome_against_gene.parse.out genome_against_gene.distance.all
+```
