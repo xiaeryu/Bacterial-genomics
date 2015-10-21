@@ -30,3 +30,4 @@ close INPUT;
 
 if($choice==2){
         print "$ARGV[0]\tTotal number of reads: $number\tNumber of bases: $total\n";
+}
