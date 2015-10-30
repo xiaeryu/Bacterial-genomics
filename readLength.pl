@@ -5,14 +5,20 @@
 ## Input2. choice, 1 for print out the read length for each read, 2 for print out the summary stats.
 
 if(!defined($ARGV[1])){
-        die "$0:<input fastq file><Choice, 1 for show each read length, 2 for show total>\n";
+        die "$0:<input fastq file, can be gzipped><Choice, 1 for show each read length, 2 for show total>\n";
 }
 
 my $choice=$ARGV[1];
 my $total;
 my $number;
 my $count;
-open(INPUT,$ARGV[0]) or die "Cannot open input file:$!\n";
+
+my $name = $ARGV[0];
+if($name =~/\.gz$/){
+        $name = "gunzip -c $ARGV[0] |";
+}
+
+open(INPUT,$name) or die "Cannot open input file:$!\n";
 while(<INPUT>){
         chomp;
         if($count%4==1){
