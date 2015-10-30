@@ -10,7 +10,8 @@ After the quality check, low quality reads can be trimmed with public tools like
 **Update(2015-06-19):** Based on our experience, trimming based on quality score brings no significant improvements for downstream analysis. So given the absence of adaptor contamination, this step can be removed from the pipeline.
 
 #### Step 3. Summary of the sequencing throughput
-The sequencing throughput both before and after trimming the reads can be summarized by calculating: 1> the number of reads; 2> the number of bases. This can be down with the script [readLength.pl](https://github.com/xiaeryu/Bacterial-genomics/blob/master/readLength.pl) in this repository.
+The sequencing throughput both before and after trimming the reads can be summarized by calculating: 1> the number of reads; 2> the number of bases. This can be down with the script [readLength.pl](https://github.com/xiaeryu/Bacterial-genomics/blob/master/readLength.pl) in this repository.  
+**Update(2015-10-30):** [readLength.pl](https://github.com/xiaeryu/Bacterial-genomics/blob/master/readLength.pl) has been updated for accepting input files in gzipped-fastq format.
 
 #### Step 4. _De novo_ assembly
 ##### _De novo_ assembly
